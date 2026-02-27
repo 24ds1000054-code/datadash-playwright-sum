@@ -1,0 +1,12 @@
+{
+  "name": "datadash-playwright-sum",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sum": "node scripts/sumTables.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.50.0"
+  }
+}
