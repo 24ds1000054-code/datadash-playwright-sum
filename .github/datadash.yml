@@ -1,0 +1,28 @@
+name: DataDash Table Sum (Playwright)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main", "master" ]
+
+jobs:
+  run-sum:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deps
+        run: npm ci || npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      # REQUIRED: email must appear in step name
+      - name: Scrape + sum tables (24ds1000054@ds.study.iitm.ac.in)
+        run: npm run sum
